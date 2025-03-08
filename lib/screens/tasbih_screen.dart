@@ -152,11 +152,10 @@ class _TasbihScreenState extends State<TasbihScreen> {
   void _resetCounter() async {
     setState(() {
       _counter = 0;
-      _completed = false; // Reset completion status
+      _completed = false;
     });
 
     final provider = Provider.of<TasbihProvider>(context, listen: false);
-    final amols = provider.amols;
 
     int index = amols.indexWhere((amol) => amol.id == provider.amol.id);
     if (index != -1) {

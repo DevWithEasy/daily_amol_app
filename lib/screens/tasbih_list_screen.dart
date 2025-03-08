@@ -292,7 +292,6 @@ class _TasbihListScreenState extends State<TasbihListScreen> {
     }
     setState(() {});
     _saveAmols();
-    showSnackbar('আমল লিস্টে যোগ হয়েছে।');
   }
 
   // Function to remove an Amol from the list and update shared preferences
@@ -305,7 +304,6 @@ class _TasbihListScreenState extends State<TasbihListScreen> {
     }
     setState(() {});
     _saveAmols();
-    showSnackbar('আমল লিস্ট থেকে মুছে ফেলা হয়েছে।');
   }
 
   @override
@@ -403,15 +401,13 @@ class _TasbihListScreenState extends State<TasbihListScreen> {
                                 title: Text(
                                   amol.name,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    fontSize: 16
-                                  ),
+                                  style: TextStyle(fontSize: 16),
                                 ),
                                 subtitle: Text(
                                   'দৈনিক টার্গেট - ${enToBnNumber(amol.target.toString())} বার',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: Colors.grey
+                                    color: Colors.grey,
                                   ),
                                 ),
                                 trailing: Row(
@@ -421,7 +417,7 @@ class _TasbihListScreenState extends State<TasbihListScreen> {
                                       icon: Icon(
                                         Icons.edit,
                                         color: AppColors.primary,
-                                        size: 20,
+                                        size: 18,
                                       ),
                                       onPressed: () {
                                         _openEditAmolModal(amol);

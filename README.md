@@ -2,7 +2,7 @@
 
 Daily amol counting apps.
 
-## Getting Started
+## App features
 
 - Amol counting
 - Amol create
