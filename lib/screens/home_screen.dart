@@ -55,13 +55,19 @@ class _HomeScreenState extends State<HomeScreen> {
       // Reset counts for all amols
       final amols = Amolserve.getAmols();
       for (var amol in amols) {
-        amol.count = 0;
+        amol.count = 0; // Reset only the count field
       }
 
       // Save the updated amols
       final amolString = json.encode(amols);
       SharedData.setString('amols', amolString);
+
+      // Save the current date
       SharedData.setString('date', currentDate);
+
+      // Increment the day counter
+      final day = SharedData.getInt('day') ?? 0;
+      SharedData.setInt('day', day + 1);
     }
   }
 
@@ -78,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(8),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -73,4 +73,13 @@ class Amolserve {
       return [];
     }
   }
+
+  static String getMode() {
+    final mode = SharedData.getString('mode');
+    if (mode!= null) {
+      return mode;
+    } else {
+      return 'volume_off';
+    }
+  }
 }

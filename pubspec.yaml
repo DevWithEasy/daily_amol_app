@@ -73,7 +73,7 @@ flutter:
     - assets/images/tab_icon_tasbih.png
     - assets/images/tab_icon_tasbih_active.png
     - assets/images/user_man.png
-    - assets/images/ayah_bg.png
+    - assets/images/dua_hero_background.png
     - assets/audio/tasbih_click_sound.mp3
     - assets/audio/tasbih_count.mp3
     - assets/json/data.json

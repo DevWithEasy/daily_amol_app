@@ -50,6 +50,7 @@ class _TasbihScreenState extends State<TasbihScreen> {
       _completed = provider.amol.count == provider.amol.target ? true : false;
       amols = Amolserve.getAmols();
       favourites = Amolserve.getFavouriteAmols();
+      _mode = Amolserve.getMode();
     });
   }
 
@@ -176,6 +177,7 @@ class _TasbihScreenState extends State<TasbihScreen> {
     setState(() {
       _mode = mode;
     });
+    SharedData.setString('mode', mode);
   }
 
   void showSnackbar(String text) {
