@@ -66,25 +66,41 @@ class _HomeScreenSliderState extends State<HomeScreenSlider> {
           fit: BoxFit.cover,
         ),
       ),
-      child: SizedBox(
-        height: 120,
-        child: PageView.builder(
-          controller: _pageController,
-          itemCount: ayahs.length,
-          onPageChanged: (index) {
-            setState(() {
-              _currentPage = index;
-            });
-          },
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Center(
-                child: Text(ayahs[index], textAlign: TextAlign.center,style: TextStyle(color : Colors.white),),
-              ),
-            );
-          },
-        ),
+      child: Stack(
+        children: [
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Opacity(
+              opacity: 0.3,
+              child: Image.asset('assets/images/dev_sign.png', height: 30),
+            ),
+          ),
+          SizedBox(
+            height: 120,
+            child: PageView.builder(
+              controller: _pageController,
+              itemCount: ayahs.length,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Center(
+                    child: Text(
+                      ayahs[index],
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

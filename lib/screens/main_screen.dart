@@ -41,6 +41,34 @@ class _MainScreenState extends State<MainScreen> {
     }
   }
 
+  // Show info dialog
+  void _showInfoDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          elevation: 10.0,
+          backgroundColor: Colors.white,
+          title: Text('তথ্য'),
+          content: Text(
+            'এই অ্যাপটি \n১. আপনাকে প্রতিদিনের আমল এবং তাসবিহ গণনা করতে সাহায্য করবে।\n২. আপনি আমল যোগ করতে পারেন, আমল গণনা করতে পারেন এবং \n৩. আপনার অগ্রগতি ট্র্যাক করতে পারেন।\nএটির অনলাইন ভার্সন ও আরো অনেক আমল সংবলিত ভার্সন খুব শিঘ্রই আসবে ইনশাল্লাহ\n\nআপনার কোন জিজ্ঞাসা থাকলে robiulawal68@gmail.com এই ইমেলে বলতে পারনে।',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('ঠিক আছে'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<TasbihProvider>(context);
@@ -50,14 +78,15 @@ class _MainScreenState extends State<MainScreen> {
           _currentIndex == 0
               ? 'প্রতিদিনের আমল'
               : _currentIndex == 1
-              ? provider.activeTasbih
-                  ? provider.amol.name
-                  : 'অ্যাকটিভ তাসবিহ নেই'
-              : 'আমলের তালিকা',
+                  ? provider.activeTasbih
+                      ? provider.amol.name
+                      : 'অ্যাকটিভ তাসবিহ নেই'
+                  : 'আমলের তালিকা',
         ),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         actions: [
+          SizedBox(width: 8),
           InkWell(
             onTap: () {
               Navigator.push(
@@ -65,9 +94,12 @@ class _MainScreenState extends State<MainScreen> {
                 MaterialPageRoute(builder: (context) => ProfileScreen()),
               );
             },
-            child: CircleAvatar(
-              child: Image.asset('assets/images/user_man.png'),
-            ),
+            child: Icon(Icons.account_circle),
+          ),
+          SizedBox(width: 8),
+          IconButton(
+            icon: Icon(Icons.info_sharp),
+            onPressed: _showInfoDialog, // Show info dialog
           ),
           SizedBox(width: 8),
         ],
